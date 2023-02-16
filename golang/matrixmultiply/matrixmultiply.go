@@ -119,7 +119,16 @@ func matrixMultiply(mat_a matrix, mat_b matrix) (matrix, error) {
 	if mat_a.ncols != mat_b.nrows{
 		return ans, errors.New("matrixMultiply: mat_a.ncols must == mat_b.nrows.")
 	}
-	// TODO: Implement matrix multiply 
+	var temp float64 = 0
+	for row_a := 0; row_a < mat_a.nrows; row_a++ {
+		for col_b :=0; col_b < mat_b.ncols; col_b++ {
+			for row_b :=0; row_b < mat_b.nrows; row_b++ {
+				temp = temp + mat_a.values[row_a][row_b] * mat_b.values[row_b][col_b]
+			}
+			ans.values[row_a][col_b] = temp
+			temp = 0
+		} 
+	}
 	return ans, nil
 }
 
