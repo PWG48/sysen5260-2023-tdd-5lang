@@ -128,7 +128,22 @@ struct t_matrix multiply(struct t_matrix a, struct t_matrix b){
     c.matsize.nrows = a.matsize.nrows;
     c.matsize.ncols = b.matsize.ncols;
     c.values = malloc_matrix(c.matsize);
-    // TODO: Implement Matrix Multiply
+    
+    // Loop through rows of matrix a
+    for (int row_a = 0; row_a < a.matsize.nrows; row_a++)
+    {
+        // Loop through columns of matrix b
+        for (int col_b = 0; col_b < b.matsize.ncols; col_b++)
+        {
+            //Loop through rows of matrix b
+            for (int row_b = 0; row_b < b.matsize.nrows; row_b++)
+            {
+                // Multiply and accumulate
+                c.values[row_a][col_b] += a.values[row_a][row_b] * b.values[row_b][col_b];
+            }
+        }
+    }
+
     return c;
 }
 
