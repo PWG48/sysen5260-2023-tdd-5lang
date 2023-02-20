@@ -36,7 +36,29 @@ function multiply(matrixA, matrixB){
     let ncols = matrixB[0].length;
     let blen = matrixB.length;
     let result = new Array(nrows);
-    // TODO: Implement Matrix Multiply
+    
+    // Loop through rows of matrix a
+    for (let row_a = 0; row_a < nrows; row_a++)
+    {
+        // Initialize this element in the output array as an array itself
+        result[row_a] = new Array(ncols);
+
+        // Loop through columns of matrix b
+        for (let col_b = 0; col_b < ncols; col_b++)
+        {
+            //Loop through rows of matrix b
+            let tempsum = 0;
+            for (let row_b = 0; row_b < blen; row_b++)
+            {
+                // Multiply and accumulate
+                tempsum += matrixA[row_a][row_b] * matrixB[row_b][col_b];
+                //result[row_a][col_b] += matrixA[row_a][row_b] * matrixB[row_b][col_b];  // Why doesnt this work?
+            }
+
+            result[row_a][col_b] = tempsum;
+        }
+    }
+
     return result;
 }
 
