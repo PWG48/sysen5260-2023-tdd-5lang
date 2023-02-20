@@ -154,7 +154,22 @@ public class Matrix{
      */
     public Matrix multiply(final Matrix other){
         Matrix result = new Matrix(this.nRows, other.nCols);
-        // TODO: Implement Matrix-Multiply 
+        
+        // Loop through rows of matrix a
+        for (int row_a = 0; row_a < this.nRows; row_a++)
+        {
+            // Loop through columns of matrix b
+            for (int col_b = 0; col_b < other.nCols; col_b++)
+            {
+                //Loop through rows of matrix b
+                for (int row_b = 0; row_b < other.nRows; row_b++)
+                {
+                    // Multiply and accumulate
+                    result.values[row_a][col_b] += this.values[row_a][row_b] * other.values[row_b][col_b];
+                }
+            }
+        }
+
         return result;
     }
     
