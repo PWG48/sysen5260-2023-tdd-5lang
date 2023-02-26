@@ -19,3 +19,11 @@ test('matrix.multiply should produce acorrect result.', () => {
     let actual = matrix.multiply(matA, matB);
     expect(actual).toEqual(expected);
 })
+
+test('matrix.multiply should produce a correct result.', () => {
+    let matD = matrix.readMatrix("/opt/data/mat_d.csv");
+    let matE = matrix.readMatrix("/opt/data/mat_e.csv");
+    let expected = matrix.readMatrix("/opt/data/mat_f.csv");
+    let actual = matrix.multiply(matD, matE);
+    expect(actual).toEqual(expected);
+})

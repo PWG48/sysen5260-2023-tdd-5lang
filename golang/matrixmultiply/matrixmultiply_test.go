@@ -30,3 +30,19 @@ func TestEndToEnd(t *testing.T){
 	panicOnError(err)
 	writeMatrix(tmp, mat_c)
 }
+
+
+func TestMatrixMpyDEF(t *testing.T){
+	mat_d := readMatrixOrPanic("/opt/data/mat_d.csv")
+	mat_e := readMatrixOrPanic("/opt/data/mat_e.csv")
+	
+	expected := readMatrixOrPanic("/opt/data/mat_f.csv")
+	mat_f,err := matrixMultiply(mat_d, mat_e)
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	if cmpMatrix(mat_f, expected) == false{
+		t.Errorf("mat_f=%v; expected=%v",mat_f, expected)
+	}
+
+}

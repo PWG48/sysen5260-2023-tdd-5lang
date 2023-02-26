@@ -52,4 +52,13 @@ public class MatrixTest
         Matrix actual = a.multiply(b);
         assertEquals("a.multiply(b) doesn't match expected matrix", expected, actual);
     }
+
+    @Test
+    public void D_Multiply_EShouldEqual_F() throws IOException, CsvException{
+        Matrix d = Matrix.readFromCsvFile("/opt/data/mat_d.csv");
+        Matrix e = Matrix.readFromCsvFile("/opt/data/mat_e.csv");
+        Matrix expected = Matrix.readFromCsvFile("/opt/data/mat_f.csv");
+        Matrix actual = d.multiply(e);
+        assertEquals("d.multiply(e) doesn't match expected matrix", expected, actual);
+    }
 }
